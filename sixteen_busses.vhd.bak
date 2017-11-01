@@ -1,0 +1,15 @@
+-- Matthew Booe
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+package sixteen_busses is    
+
+   type bus_input is array(NATURAL range <>) of std_logic_vector(7 downto 0);
+	
+end sixteen_busses;
+
+package body sixteen_busses is
+   -- subprogram bodies here
+end sixteen_busses;

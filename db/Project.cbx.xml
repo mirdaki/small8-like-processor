@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Project">
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_level|datapath:datapath|alu:alu|lpm_mult:Mult0" CBX_FILE_NAME="mult_19t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_level|datapath:datapath|mult:ram|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_3ip1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

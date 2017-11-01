@@ -1,0 +1,202 @@
+-- Matthew Booe
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+ 
+entity alu_tb is
+end alu_tb;
+
+
+architecture TB of alu_tb is
+
+	constant WIDTH : positive := 8;
+
+	component add
+		port (
+			input1   : in std_logic_vector(WIDTH-1 downto 0);
+			input2   : in std_logic_vector(WIDTH-1 downto 0);
+			sel      : in std_logic_vector(3 downto 0);
+			output   : out std_logic_vector(WIDTH-1 downto 0);
+			overflow : out std_logic);
+	end component;
+	
+	signal input1   : std_logic_vector(WIDTH-1 downto 0);
+	signal input2   : std_logic_vector(WIDTH-1 downto 0);
+	signal sel      : std_logic_vector(3 downto 0);
+	signal output   : std_logic_vector(WIDTH-1 downto 0);
+	signal overflow : std_logic;
+
+begin  -- TB
+
+	UUT : entity work.alu_ns(ns)
+		generic map (WIDTH => WIDTH)
+		port map (
+			input1   => input1,
+			input2   => input2,
+			sel      => sel,
+			output   => output,
+			overflow => overflow
+		);
+  
+	process
+	begin
+		
+		-- Addition 
+		sel    <= "0000";
+		input1 <= "00000011";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000111" and overflow = '0') report "ADD 1 FAILED." severity warning;
+	 
+	  	sel    <= "0000";
+		input1 <= "10010011";
+		input2 <= "10010000";
+		wait for 10 ns;
+		assert(output = "00100011" and overflow = '1') report "ADD 2 FAILED." severity warning;
+		
+		-- Subtraction
+		sel    <= "0001";
+		input1 <= "00000100";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000000" and overflow = '0') report "SUB 1 FAILED." severity warning;
+		
+		sel    <= "0001";
+		input1 <= "00010011";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00001111" and overflow = '0') report "SUB 2 FAILED." severity warning;
+		
+		-- Multiply
+		sel    <= "0010";
+		input1 <= "00000010";
+		input2 <= "00000010";
+		wait for 10 ns;
+		assert(output = "00000100" and overflow = '0') report "MUL 1 FAILED." severity warning;
+		
+		sel    <= "0010";
+		input1 <= "10000011";
+		input2 <= "10000100";
+		wait for 10 ns;
+		assert(output = "10001100" and overflow = '1') report "MUK 2 FAILED." severity warning;
+		
+		-- And
+		sel    <= "0011";
+		input1 <= "00000111";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000100" and overflow = '0') report "AND 1 FAILED." severity warning;
+		
+		-- Or
+		sel    <= "0100";
+		input1 <= "00000011";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000111" and overflow = '0') report "OR 1 FAILED." severity warning;
+		
+		-- Xor
+		sel    <= "0101";
+		input1 <= "00000111";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000011" and overflow = '0') report "XOR 1 FAILED." severity warning;
+		
+		-- Nor
+		sel    <= "0110";
+		input1 <= "00000111";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "11111000" and overflow = '0') report "NOR 1 FAILED." severity warning;
+		
+		-- Not 
+		sel    <= "0111";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "11111100" and overflow = '0') report "NOT 1 FAILED." severity warning;
+		
+		-- Shift left
+		sel    <= "1000";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000110" and overflow = '0') report "SL1 1 FAILED." severity warning;
+		
+		sel    <= "1000";
+		input1 <= "10000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000110" and overflow = '1') report "SL1 2 FAILED." severity warning;
+		
+		-- Shift right
+		sel    <= "1001";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000001" and overflow = '0') report "SR1 1 FAILED." severity warning;
+		
+		sel    <= "1001";
+		input1 <= "10000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "01000001" and overflow = '0') report "SR1 2 FAILED." severity warning;
+		
+		-- Swap
+		sel    <= "1010";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00110000" and overflow = '0') report "SWP 1 FAILED." severity warning;
+		
+		sel    <= "1010";
+		input1 <= "11110001";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00011111" and overflow = '0') report "SWP 2 FAILED." severity warning;
+		
+		-- Reverse 
+		
+		sel    <= "1011";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "11000000" and overflow = '0') report "REV 1 FAILED." severity warning;
+		
+		sel    <= "1011";
+		input1 <= "00000000";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000000" and overflow = '0') report "REV 2 FAILED." severity warning;
+		
+		sel    <= "1011";
+		input1 <= "10000001";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "10000001" and overflow = '0') report "REV 3 FAILED." severity warning;
+		
+		-- QUIZ PART
+		sel    <= "1100";
+		input1 <= "00000011";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000110" and overflow = '0') report "ROL 1 FAILED." severity warning;
+		
+		sel    <= "1100";
+		input1 <= "11101111";
+		--input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "11011111" and overflow = '0') report "ROL 2 FAILED." severity warning;
+		
+		-- Extra
+		sel    <= "1111";
+		input1 <= "00000011";
+		input2 <= "00000100";
+		wait for 10 ns;
+		assert(output = "00000000" and overflow = '0') report "EXT 1 FAILED." severity warning;
+	
+		report "SIMULATION FINISHED!";
+		wait;
+	end process;
+
+end TB;

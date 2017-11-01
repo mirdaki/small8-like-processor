@@ -1,0 +1,22 @@
+-- Matthew Booe
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
+entity adder is 
+	port (
+		pc_in  : in  std_logic_vector(15 downto 0);
+		num_in : in  std_logic_vector(2 downto 0);
+		output : out std_logic_vector(15 downto 0)
+	);
+end three_to_one_mux;
+
+
+architecture BHV of three_to_one_mux is
+begin
+
+	output <= input(sel);
+
+end BHV;

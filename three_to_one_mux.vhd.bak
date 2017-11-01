@@ -1,0 +1,28 @@
+-- Matthew Booe
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.busses.all;
+
+
+entity four_to_one_mux is
+	--generic (
+	--	WIDTH : positive := 10
+	--);
+
+	port (
+		input  : in  bus_input(10 downto 0);
+		sel    : in  integer range 0 to 10;
+		--sel    : in  std_logic_vector(log2ceilz(WIDTH)-1 downto 0); --log2ceilnz() calculates the needed bits to encode x symbols in binary
+		output : out std_logic_vector(7 downto 0)
+	);
+end gen_buses;
+
+
+architecture BHV of gen_buses is
+begin
+
+	output <= input(sel);
+
+end BHV;

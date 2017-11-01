@@ -1,0 +1,23 @@
+-- Matthew Booe
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.eight_busses.all;
+use work.sixteen_busses.all;
+
+entity mem_decoder is
+    port (
+        address    : in  std_logic_vector(15 downto 0);
+        write_en   : in  std_logic;
+		  read_en    : in  std_logic;
+        enable     : out std_logic;
+		  outport2   : out std_logic_vector(7 downto 0);
+		  );
+		  
+end mem_decoder;
+
+
+architecture BHV of mem_decoder is
+
+end BHV;

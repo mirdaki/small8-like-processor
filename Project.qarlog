@@ -1,0 +1,28 @@
+Quartus II Archive log --	C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/Project.qarlog
+
+Archive:	C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/Project.qar
+Date:		Wed Apr 06 11:22:07 2016
+Quartus II 64-Bit		12.1 Build 177 11/07/2012 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/Project.qpf
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/Project.qsf
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/adder.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/alu.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/alu_tb.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/controler.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/datapath.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/datapath_tb.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/eight_bit_reg.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/eight_bus.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/eight_busses.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/incremental_db/compiled_partitions/Project.db_info
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/one_bit_reg.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/sixteen_bus.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/sixteen_busses.vhd
+C:/Users/Matthew/Desktop/Digtial Design Labs/Project/Project/three_to_one_mux.vhd
+c:/altera/12.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 17 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
